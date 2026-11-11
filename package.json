@@ -1,0 +1,21 @@
+{
+  "name": "llm-evals-promptfoo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Spanish banking-assistant evaluations with Promptfoo and the OpenAI Codex SDK",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "codex": "codex",
+    "validate": "promptfoo validate config -c promptfooconfig.codex.yaml",
+    "eval": "promptfoo eval -c promptfooconfig.codex.yaml --max-concurrency 1",
+    "eval:smoke": "promptfoo eval -c promptfooconfig.codex.yaml --filter-first-n 1 --max-concurrency 1",
+    "view": "promptfoo view"
+  },
+  "devDependencies": {
+    "@openai/codex": "0.156.1",
+    "@openai/codex-sdk": "0.156.1",
+    "promptfoo": "0.125.1"
+  }
+}

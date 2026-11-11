@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+.codex/
+
+# Local evaluation state and exports
+.promptfoo/
+eval-results/
+
+# Logs
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
