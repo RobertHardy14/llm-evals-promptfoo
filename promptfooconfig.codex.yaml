@@ -6,8 +6,11 @@
 # OPENAI_API_KEY / CODEX_API_KEY is set — see README.md.
 #
 # IMPORTANT differences vs the DeepSeek version:
-# - No model and no model_reasoning_effort are set on purpose:
-#   Promptfoo / the Codex SDK decide the default.
+# - Model and effort are PINNED on purpose (2026-11-10, after the
+#   first run): leaving them unset inherited model_reasoning_effort
+#   = "max" from ~/.codex/config.toml, which burned 95% of the
+#   5-hour Codex quota in one 9-test run (525,049 total tokens).
+#   Luna + low is the cheap, reproducible setting for this suite.
 # - The Codex SDK provider does NOT support temperature / max_tokens /
 #   top_p, so those keys are deliberately absent here.
 # - Codex runs as an AGENT, not a plain chat completion: each test
@@ -49,8 +52,8 @@ providers:
   - id: openai:codex-sdk
     label: codex-sdk (ChatGPT Plus login)
     config:
-      # Sin model ni model_reasoning_effort a propósito:
-      # que Promptfoo / el SDK de Codex decidan el default.
+      model: gpt-6-luna
+      model_reasoning_effort: low
       sandbox_mode: read-only
       approval_policy: never
       skip_git_repo_check: true
